@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Continuous effort will reward you in the end">
+    <meta name="keyword"  content="Software Engineer, Developer">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Disqus 삽질 - JayB Kim
+        
+    </title>
+
+    <link rel="canonical" href="https://jaybdev.net/2018/07/24/Disqus-1/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('null')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/JayBTechSignature-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Disqus" title="Disqus">Disqus</a>
+                            
+                              <a class="tag" href="/tags/#삽질" title="삽질">삽질</a>
+                            
+                        </div>
+                        <h1>Disqus 삽질</h1>
+                        <h2 class="subheading">We were unable to load Disqus. If you are a moderator please user out troubleshooting guide.</h2>
+                        <span class="meta">
+                            Posted by JayB Kim on
+                            2018-07-24
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">JayB Tech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h3><span id="참고"># 참고</span></h3>
+<p>본 글에선 Hexo 테마를 설치하는 방법이나 Hexo 를 왜 사용하게 되었는지에 대한 부분은 다루지 않으니 궁금하시다면 구글링을 하여 원하는 부분을 찾으시길 바랍니다.</p>
+<p>조금만 검색을 해보시면 Hexo 공식사이트나 다른 블로그에 좋은 정보들을 얻을 수 있습니다.</p>
+<h3><span id="이-글의-목적"># 이 글의 목적</span></h3>
+<p>제가 사용하고 있는 이 Hexo 테마 블로그에 Disqus 댓글 기능을 연동하면서 제가 직접 경험한 삽질에 대해서 기록하여 다른 분들은 이런 삽질을 하지 않았으면 하는 공유 차원에서 글을 작성하게 되었습니다.</p>
+<p>아래와 같은 에러 메세지가 출력된다면 제가 경험하고 해결한 방법을 참고하세요.</p>
+<p style="color: red;"> "We were unable to load Disqus. If you are a moderator please user out troubleshooting guide."</p>
+<h3><span id="댓글을-달기-위해-시도한-프로세스-정리"># 댓글을 달기 위해 시도한 프로세스 정리</span></h3>
+<p>아래는 많은 튜토리얼이나 글을 보면 아래와 같은 방식으로 hexo 테마에 Disqus 댓글기능을 쉽게 추가하는 걸 볼 수 있다.</p>
+<ol>
+<li>
+<p>Disqus 홈페이지 <a href="https://disqus.com" target="_blank" rel="noopener">https://disqus.com</a> 가서 계정을 생성한다.<br>
+<br></p>
+</li>
+<li>
+<p>Disqus Admin 페이지에 가서 Site 를 생성한 후 Website 이름과 URL 을 작성하고 Shortname 을 복사한 후 _config.yml 파일에 disqus_username 부분에 붙여넣어준다.<br>
+Hexo 테마 중에 Disqus 를 지원하지 않는 테마라면 직접 Disqus Admin Installation Guide에서 제공하는 소스코드를 이용해서 커스텀하게 넣어줘야 한다.<br>
+<br></p>
+</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/20435620/43147321-b9163c14-8f9d-11e8-94cb-9fa7a57db374.png" alt="1"></p>
+<p><img src="https://user-images.githubusercontent.com/20435620/43147347-cc1a0a70-8f9d-11e8-9074-a4dd959e0b51.png" alt="2"></p>
+<p>이렇게 쉬운데 왜 작동을 안하는지 이유가 뭘까? 라는 의문을 가지며 개발자 답게 하나하나씩 검토하기 시작했다.</p>
+<p>첫번쨰로 테마를 개발한 분의 미숙으로 인해 Disqus 기능이 추가될 때 휴먼에러가 있지 않을까? 하는 생각에 테마 source 폴더에 가서 댓글이 달리는 해당 ejs 파일에 Disqus 소스코드를 뜯어보았다. 아주 문제없이 잘 들어가있었다.</p>
+<p><img src="https://user-images.githubusercontent.com/20435620/43147611-6ed89524-8f9e-11e8-8310-c93e0462b40f.png" alt="3"></p>
+<p>두번째로 원초적인 방법으로 Disqus shortname 이 제대로 동작을 하는지 알아보기 위해 Admin -&gt; Installation -&gt; Universal Code를 이용하여 아래와 같이 간단한 html 을 작성하여 테스트를 해보았다.</p>
+<p>테스트 방법은 <a href="https://opentutorials.org/course/2473/13865" target="_blank" rel="noopener">생활코딩</a> 동영상 강좌를 참고하세요.</p>
+<p>처음 테스트 당시엔 브라우저에 파일 경로 drag 방식으로 끌어다가 실행했기 떄문에 제대로 동작하지 않았다. (이때 뭐지?..멘붕이 왔다. Disqus 에 문제가 있나? 내 아이디에 문제가 있나?)</p>
+<p><img src="https://user-images.githubusercontent.com/20435620/43147764-c130f384-8f9e-11e8-8754-53d5f06f8826.png" alt="4"></p>
+<p>생각이 많아지고 미궁속으로 빠지게 되었지만 디버깅을 해보면서 깨닫게 되었다.</p>
+<p>“브라우저에 localhost 환경을 갖추어 되는구나!” http-server 를 이용하여 브라우저에서 localhost로 실행을 해보니 아주 잘 작동했다.</p>
+<p>너무 바보 같다.</p>
+<p>http-server가 생소하신 분은 윈도우면 WAMP 맥OS 환경이면 MAMP 솔루션을 구글에 검색하여 설치하여 사용법을 익히고 www/ 폴더에 작성한 html을 넣어 localhost 로 브라우저에서 실행해보시길 바랍니다.</p>
+<h3><span id="해결-방법"># 해결 방법</span></h3>
+<p>너무나도 간단하게 이것 저것 만지다가 해결됬다.</p>
+<p>_config.yml 파일에 보면 url 을 넣는 부분이 있다.</p>
+<p>저 url 부분에 CNAME 처럼 <a href="http://jaybdev.net">jaybdev.net</a> 으로 넣었었는데 아래 이미지와 같이</p>
+<p>http:// 또는 https:// 를 넣어줬어야 했다.</p>
+<p>이런…</p>
+<p><img src="https://user-images.githubusercontent.com/20435620/43148195-c3840594-8f9f-11e8-87c4-0222c4beedc8.png" alt="screen shot 2018-07-25 at 12 14 20 am"></p>
+<h3><span id="느낀-점"># 느낀 점</span></h3>
+<p>개발자로 살아가면서 수 많은 에러를 경험하고 디버깅을 하게 되지만 이런 어처구니 없이 쉬운 삽질은 오랜만에 경험하게 되었다.</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/07/25/NodeJS-1/" data-toggle="tooltip" data-placement="top" title="node.js 앱의 인스턴스를 관리해주는 forever 명령어 정리">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/08/10/Web-3/" data-toggle="tooltip" data-placement="top" title="비트맵 (Bitmap) 그래픽과 벡터 (Vector) 그래픽의 특징">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"># 참고</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"># 이 글의 목적</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"># 댓글을 달기 위해 시도한 프로세스 정리</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"># 해결 방법</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text"># 느낀 점</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Disqus" title="Disqus">Disqus</a>
+                        
+                          <a class="tag" href="/tags/#삽질" title="삽질">삽질</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "jaybtech";
+    var disqus_identifier = "https://jaybdev.net/2018/07/24/Disqus-1/";
+    var disqus_url = "https://jaybdev.net/2018/07/24/Disqus-1/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jaybkim1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/jaybkim2">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/jaybkim1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; JayB Kim 2018 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Designed by <a href="https://jaybdev.net">JayB</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://jaybdev.net/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-105225167-1';
+    var _gaDomain = 'https://jaybdev.net';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://jaybdev.net/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

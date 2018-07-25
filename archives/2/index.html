@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Continuous effort will reward you in the end">
+    <meta name="keyword"  content="Software Engineer, Developer">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          JayB Kim
+        
+    </title>
+
+    <link rel="canonical" href="https://jaybdev.net/archives/2/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/header_img/home-bg-2-dark.png') 
+            /*config*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/JayBTechSignature-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="site-heading">
+                        <h1>JayB Tech</h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading">Continuous Effort Will Reward You In the End</span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">JayB Tech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
+                <!-- Main Content -->
+
+
+<div class="post-preview">
+
+    <a href="/2017/05/14/Algorithm-6/">
+        <h2 class="post-title">
+            삽입 정렬 알고리즘 (Insertion Sort Algorithm)
+        </h2>
+        <h3 class="post-subtitle">
+            알고리즘 및 자료구조
+        </h3>
+        <div class="post-content-preview">
+            안녕하세요?
+철학적인 개발자 JayB 입니다.
+오늘은 삽입 정렬 알고리즘에 관하여 정리해보는 시간을 가지려 합니다.
+삽입 정렬 알고리즘이란? (Insertion Sort Algorithm)
+적절한 위치에 데이터 삽입하기
+중요포인트 (기본적인 개념)
+
+새로운 데이터를 기존의 데이터들 사이에 삽입한다는 것!
+
+예를 들어,
+5,4,3,2,1 과 같은 배열이......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by JayB Kim on
+            2017-05-14
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Algorithm" title="Algorithm">Algorithm</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/05/13/Algorithm-5/">
+        <h2 class="post-title">
+            버블 정렬 알고리즘 (Bubble Sort Algorithm)
+        </h2>
+        <h3 class="post-subtitle">
+            알고리즘 및 자료구조
+        </h3>
+        <div class="post-content-preview">
+            안녕하세요?
+철학적인 개발자 JayB 입니다.
+오늘은 버블 정렬 알고리즘에 관하여 정리해보는 시간을 가지려 합니다.
+버블 정렬 알고리즘이란? (Bubble Sort Algorithm)
+옆에 있는 수를 비교해서 큰 수를 뒤로 보내는 알고리즘
+(매번 연속된 두개의 인덱스 값을 비교하여 정한 기준의 값을 뒤로 넘겨 정렬하는 방법)
+중요포인트(기본적인 개념)......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by JayB Kim on
+            2017-05-13
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Algorithm" title="Algorithm">Algorithm</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/05/12/Algorithm-4/">
+        <h2 class="post-title">
+            선택 정렬 알고리즘 (Selection Sort Algorithm)
+        </h2>
+        <h3 class="post-subtitle">
+            알고리즘 및 자료구조
+        </h3>
+        <div class="post-content-preview">
+            안녕하세요?
+철학적인 개발자 JayB 입니다.
+오늘은 선택 정렬 알고리즘에 관하여 정리해보는 시간을 가지려 합니다.
+선택 정렬 알고리즘 이란 (Selection Sort Algorithm)?
+가장 작은 숫자를 선택해서 제일 앞으로 보내기! [오름차순]
+선택 정렬의 장점
+
+
+데이터의 양이 적을 때 좋은 성능을 나타냄.
+
+
+작은 값을 선택하기 위해서 비교......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by JayB Kim on
+            2017-05-12
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Algorithm" title="Algorithm">Algorithm</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/05/10/Android-2/">
+        <h2 class="post-title">
+            안드로이드 6.0 마시멜로 버전 이후 권한 방식 문제
+        </h2>
+        <h3 class="post-subtitle">
+            안드로이드 6.0 마시멜로 버전 이후 부터 변경된 권한 방식에 대한 이해와 요청 방식
+        </h3>
+        <div class="post-content-preview">
+            들어가기에 앞서…
+안녕하세요?
+철학적인 개발자 JayB 입니다.
+이 글을 보시는 분들은 아마 안드로이드 6.0 이상 권한 문제를 해결하기 위해 오셨을 겁니다.
+바로 적용을 해보기 전에 간단한 배경 및 역사에 대해서 알아봐야 합니다.
+이미 아시는 분들은 맨 아래 Github 링크로 가셔서 소스부터 보셔도 됩니다.
+안드로이드 6.0 Marshmellow는......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by JayB Kim on
+            2017-05-10
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Android" title="Android">Android</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/05/03/Git-1/">
+        <h2 class="post-title">
+            GitHub Pages 커스텀 도메인 설정하기
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            들어가기에 앞서…
+대부분의 내용은 이 블로그 를 참고하여 정리하였습니다.
+위 블로그 외에도 여러 자료를 참고하여 커스텀 도메인을 적용하였습니다.
+그 과정중에 개인적으로 경험했던 햇갈렸던 부분 에 대해 기록해놓으려고 포스팅하게 되었습니다.
+이 자료가 저 처럼 GitHub 블로그를 운영함에 있어 처음 커스텀 도메인을 등록하시려는 분에게 도움이 되길 바라며......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by JayB Kim on
+            2017-05-03
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Git" title="Git">Git</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/05/01/Java-2/">
+        <h2 class="post-title">
+            List 를 순회하는 방법
+        </h2>
+        <h3 class="post-subtitle">
+            자바에서의 다양한 List 순회 방법
+        </h3>
+        <div class="post-content-preview">
+            안녕하세요?
+철학적인 개발자 JayB 입니다.
+오늘은 자바에서 여러가지 방법으로 List를 순회하는 방법을 정리해보는 시간을 가지려 합니다.
+리스트
+아래와 같이 List에 5 가지의 과자 문자열을 가지고 있다고 할 때 하나하나의 과자를 출력해보려고 합니다.
+1List&lt;String&gt; fruits = new ArrayList&lt;&gt;(Ar......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by JayB Kim on
+            2017-05-01
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Java" title="Java">Java</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/04/30/Android-1/">
+        <h2 class="post-title">
+            XML과 JSON
+        </h2>
+        <h3 class="post-subtitle">
+            데이터 파싱시 사용되는 텍스트 포맷형식인 XML과 JSON
+        </h3>
+        <div class="post-content-preview">
+            들어가기에 앞서…
+이 포스팅에서 다룰 주제는 XML과 JSON 입니다.
+XML 과 JSON 의 개념은 한국관광공사 오픈 API를 이용해 음식점 데이터를 파싱해서 제가 구축해놓은 DB에 그 데이터들을 넣으면서
+배웠던 개념이지만 막상 설명을 하려니 머뭇거리게 되어 정리해보려 합니다.
+XML 과 JSON 은 언제 사용 할까?
+XML 과 JSON 은 뭘까? ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by JayB Kim on
+            2017-04-30
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Android" title="Android">Android</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/04/28/Web-2/">
+        <h2 class="post-title">
+            REST가 모야? REST API?
+        </h2>
+        <h3 class="post-subtitle">
+            REST의 개념과 RESTful한 아키텍처 설계에 대한 이해
+        </h3>
+        <div class="post-content-preview">
+            들어가기 전에…
+최근들어 채용공고를 보면 지원자격에 RESTful API 가 종종 들어가 있는걸 보고 RESTful API에 맞게 설계했나요? 라는 질문도 면접에서 심심찮게 들어본 경험이 있다.
+웹 개발 당시 RESTful 하게 아키텍처를 설계하기 위해 많은 글을 읽고 참고하며 적용을 한다고 했지만 그 당시에도 다른 사람을 가르칠 정도로 개념이 머릿속......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by JayB Kim on
+            2017-04-28
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Web" title="Web">Web</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/04/25/Java-1/">
+        <h2 class="post-title">
+            추상(Abstract)클래스와 인터페이스(Interface)
+        </h2>
+        <h3 class="post-subtitle">
+            객체지향 OOP를 활용하기 위한 중요한 두가지 개념
+        </h3>
+        <div class="post-content-preview">
+            들어가기에 앞서…
+이 포스팅에서 다룰 주제는 추상클래스와 인터페이스 입니다.
+자바에서는 객체지향을 본격적으로 활용하기 위해서는 자바의 객체지향 개념을 더욱 더 깊게 이해하고 적용할 필요가 있습니다.
+자바에서는 C언어나 여타 원시적인 프로그래밍 언어에서는 제공하지 않았던 특수한 기능들을 제공합니다.
+대표적으로 추상 (Abstract)의 개념이 있으며 그......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by JayB Kim on
+            2017-04-25
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Java" title="Java">Java</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/04/24/Algorithm-3/">
+        <h2 class="post-title">
+            이진탐색트리 (Binary Search Tree)
+        </h2>
+        <h3 class="post-subtitle">
+            이진탐색트리에 대한 개념과 이해
+        </h3>
+        <div class="post-content-preview">
+            들어가기에 앞서…
+안녕하세요?
+철학적인 개발자 JayB 입니다.
+본 포스팅은 이진탐색트리에 대한 개념을 여러 블로그와 자료를 통해 이해한 후 이진탐색트리 프로그램을 만들어봤습니다.
+기록 차원에서 남겨두려고 작성한거니 참고하실 분은 참고하시면 되겠습니다.
+이진탐색트리란?
+예전에 나름 정리했던 내용임에도 불구하고 기억이 산산조각 난것처럼 어렴풋이 잔조각만......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by JayB Kim on
+            2017-04-24
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Algorithm" title="Algorithm">Algorithm</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+        <li class="previous">
+            <a href="/">&larr; Newer Posts</a>
+        </li>
+    
+    
+        <li class="next">
+            <a href="/archives/3/">Older Posts &rarr;</a>
+        </li>
+    
+</ul>
+
+
+
+                <!-- 如果开启评论功能 -->
+                
+            </div>
+
+          <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+        <!-- Short About -->
+<section class="visible-md visible-lg">
+    <h5><a href="/about/">ABOUT ME</a></h5>
+    <div class="short-about">
+
+        
+            <img id = "avatar_pic" src="/img/jayb.png" />
+        
+
+        
+            <p>Hi, i&#39;m JayB Kim</p>
+        
+
+        <!-- SNS Link -->
+        <ul class="list-inline">
+            
+            
+            
+
+            
+
+            
+                <li>
+                    <a target="_blank"  href="https://github.com/jaybkim1">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+
+            
+                <li>
+                    <a target="_blank" href="https://www.facebook.com/jaybkim2">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+
+
+            
+            
+                <li>
+                    <a target="_blank"  href="https://www.linkedin.com/in/jaybkim1">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</section>
+        <hr>
+    
+        <!-- Featured Tags -->
+
+<section>
+    <!-- no hr -->
+    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#Algorithm" title="Algorithm" rel="9">Algorithm</a>
+            
+        
+            
+            <a href="/tags/#Android" title="Android" rel="2">Android</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#삽질" title="삽질" rel="2">삽질</a>
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#Java" title="Java" rel="4">Java</a>
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#Web" title="Web" rel="3">Web</a>
+            
+        
+            
+        
+    </div>
+</section>
+
+        <hr>
+    
+        
+  <h5>RECENT POSTS</h3>
+  <div class="widget">
+    <ul>
+      
+        <li>
+          <a href="/2018/07/25/NodeJS-1/">node.js 앱의 인스턴스를 관리해주는 forever 명령어 정리</a>
+        </li>
+      
+        <li>
+          <a href="/2018/07/24/Disqus-1/">Disqus 삽질</a>
+        </li>
+      
+        <li>
+          <a href="/2017/08/10/Web-3/">비트맵 (Bitmap) 그래픽과 벡터 (Vector) 그래픽의 특징</a>
+        </li>
+      
+        <li>
+          <a href="/2017/07/15/Java-4/">String, StringBuffer, StringBuilder 의 차이점</a>
+        </li>
+      
+        <li>
+          <a href="/2017/07/05/PHP-1/">자주 사용하는 PHP 유효성 체크</a>
+        </li>
+      
+    </ul>
+  </div>
+
+        <hr>
+    
+</div>
+
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jaybkim1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/jaybkim2">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/jaybkim1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; JayB Kim 2018 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Designed by <a href="https://jaybdev.net">JayB</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://jaybdev.net/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-105225167-1';
+    var _gaDomain = 'https://jaybdev.net';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://jaybdev.net/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

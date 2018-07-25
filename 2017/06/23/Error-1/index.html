@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Continuous effort will reward you in the end">
+    <meta name="keyword"  content="Software Engineer, Developer">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Atom Helper 로 인한 극도에 치달은 CPU 사용량 - JayB Kim
+        
+    </title>
+
+    <link rel="canonical" href="https://jaybdev.net/2017/06/23/Error-1/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('null')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/JayBTechSignature-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#삽질" title="삽질">삽질</a>
+                            
+                              <a class="tag" href="/tags/#Error" title="Error">Error</a>
+                            
+                        </div>
+                        <h1>Atom Helper 로 인한 극도에 치달은 CPU 사용량</h1>
+                        <h2 class="subheading">Atom Editor 업그레이드 한 후 극도에 치달은 CPU 사용량을 해결하는 방법에 대해 정리해보려고 합니다</h2>
+                        <span class="meta">
+                            Posted by JayB Kim on
+                            2017-06-23
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">JayB Tech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>안녕하세요?</p>
+<p>철학적인 개발자 JayB 입니다.</p>
+<p>오늘은 제가 자주 사용하는 Atom Editor 를 사용하면서 CPU 사용량이 미칠듯이 치솟는 현상을 경험하여</p>
+<p>해결한 방법에 대해서 정리해보려고 합니다.</p>
+<p>하마터면, 제 소중한 맥북이 타버릴뻔 했네요ㅜㅜ</p>
+<h2><span id="발생시기-추정">발생시기 추정</span></h2>
+<p>저 같은 경우 이 현상은 <strong>Atom Editor 를 업그레이드</strong> 하면서 발생한 걸로 판단되지만 확실하진 않습니다.</p>
+<p>이전에는 아무렇지 않게 사용했었는데 업그레이드를 저번주에 하고 발생한걸로 보아 그리 추정합니다.</p>
+<p>오늘 날짜 2017년 9월 16일로 최신 버전인 <strong>1.20.0</strong> 버전을 사용중에 있습니다.</p>
+<p>NodeJS 를 검토하면서 여러가지 테스트를 하기 위해 Atom Editor 를 켰고</p>
+<p>어느 순간부터 갑자기 제 맥북에서 팬 돌아가는 소리가 커지기 시작했습니다.</p>
+<p>…??</p>
+<p>잉 ? 왜이러지?</p>
+<p>당황했습니다…</p>
+<p><img src="https://user-images.githubusercontent.com/20435620/30512457-2de33b86-9b2b-11e7-9bfa-6dd874cdfc46.png" alt="당황"></p>
+<p>단순히 프로젝트가 무겁다라고 생각 하기 힘든 작업을 하고 있었기에</p>
+<p>바로 생각이 든건…</p>
+<blockquote>
+<p>지금까지 내가 너무 막 사용했나?</p>
+</blockquote>
+<p>음…</p>
+<p>일단, <strong>Activity Monitor</strong> 어플리케이션을 이용하여 CPU 사용량과 메모리를 확인합니다.</p>
+<p>아래 이미지를 한번 보시죠.</p>
+<p><em>위 이미지는 상황 발생시 해결하는데 집중하느라 캡처하지 못해 비슷한 상황을 겪은 외국분이 올린 이미지를 가져왔습니다</em></p>
+<img width="336" alt="a2d1148b-3d92-4bac-aaf4-5f91c911e523" src="https://user-images.githubusercontent.com/20435620/30512441-ce4dec20-9b2a-11e7-9f27-2b8c19ecf91c.png">
+<p>Atom Helper 보이시나요?</p>
+<p><strong>저 같은 경우 100% 가 훌쩍 넘어 200% 까지 가더군요.</strong></p>
+<p>이건 정말 아니다 싶어 구글링을 합니다.</p>
+<p>열심히 찾아본 결과 아래와 같은 링크를 찾을 수 있었고 생각보다 많은 분들이 저와 같은 상황을 경험하고 있었더군요.</p>
+<ul>
+<li>
+<p><a href="https://www.bountysource.com/issues/4121842-atom-helper-high-cpu-usage" target="_blank" rel="noopener">https://www.bountysource.com/issues/4121842-atom-helper-high-cpu-usage</a></p>
+</li>
+<li>
+<p><a href="https://github.com/atom/atom/issues/3426" target="_blank" rel="noopener">https://github.com/atom/atom/issues/3426</a></p>
+</li>
+</ul>
+<p>음…그래서 어떻게 해결했다는거지?</p>
+<p>쭈욱 읽어본 결과 <strong>상황에 따라 다르다</strong></p>
+<p>그럼 내가 확인할 수 있는 최선책은 일단 <em>Preferences</em> 에 가서 <em>Packages</em> 쪽을 봤습니다.</p>
+<p>제가 사용하고 있는 <strong>Packages 들을 한번 다 Disable</strong> 해봤습니다.</p>
+<p>결과는?</p>
+<blockquote>
+<p>해결되지 않았습니다.</p>
+</blockquote>
+<p>이게 아닌가 보군.</p>
+<p>다시 돌려놓고 원인을 찾기 위해 좀 더 뒤져봤습니다.</p>
+<blockquote>
+<p>Core Packages !!!</p>
+</blockquote>
+<p><em>Core Packages</em> 부분에 눈이 들어왔고 제가 사용하고 있는 코어 패키지들은 뭐가 있는지 하나하나 자세히 봤습니다.</p>
+<h2><span id="disable-github-git-diff-core-packages">Disable github, git-diff (Core Packages)</span></h2>
+<p>git-diff, github 보이시나요?</p>
+<p><img src="https://user-images.githubusercontent.com/20435620/30512480-026c0306-9b2c-11e7-88e1-fb72f79a2562.png" alt="iotwxq"></p>
+<p>저는 이 두 패키지를 Disable 시켰봤더니 CPU 사용량이 바로 낮아지더군요.</p>
+<blockquote>
+<p>해결!</p>
+</blockquote>
+<p>제 추측이지만, Atom Editor 에서 제가 사용하는 git 관련 소스파일들을 참조하고 있었던 것 같습니다.</p>
+<p>이 2개의 패키지에 대해 시간이 없는 관계로 자세히 살펴보는 것 까진 하지 않았습니다.</p>
+<p>나중에 여유가 생기면 해봐야죠.</p>
+<p>아시는분이 있다면 댓글로 알려주시면 감사하겠습니다 ^^</p>
+<p>일단 해결은 됬으니 마음에 안정이 됩니다.</p>
+<p>그럼 다시 열코하러~!</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2017/07/05/PHP-1/" data-toggle="tooltip" data-placement="top" title="자주 사용하는 PHP 유효성 체크">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/06/13/Algorithm-9/" data-toggle="tooltip" data-placement="top" title="자바에서 sort()로 정렬하는 방법">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">발생시기 추정</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Disable github, git-diff (Core Packages)</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#삽질" title="삽질">삽질</a>
+                        
+                          <a class="tag" href="/tags/#Error" title="Error">Error</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "jaybtech";
+    var disqus_identifier = "https://jaybdev.net/2017/06/23/Error-1/";
+    var disqus_url = "https://jaybdev.net/2017/06/23/Error-1/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jaybkim1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/jaybkim2">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/jaybkim1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; JayB Kim 2018 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Designed by <a href="https://jaybdev.net">JayB</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://jaybdev.net/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-105225167-1';
+    var _gaDomain = 'https://jaybdev.net';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://jaybdev.net/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

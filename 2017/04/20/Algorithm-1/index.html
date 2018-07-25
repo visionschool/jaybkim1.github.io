@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Continuous effort will reward you in the end">
+    <meta name="keyword"  content="Software Engineer, Developer">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          알고리즘은 무엇이고 왜 알아야 되며 어떻게 공부해야 되는걸까 ? - JayB Kim
+        
+    </title>
+
+    <link rel="canonical" href="https://jaybdev.net/2017/04/20/Algorithm-1/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('null')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/JayBTechSignature-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#알고리즘" title="알고리즘">알고리즘</a>
+                            
+                              <a class="tag" href="/tags/#Algorithm" title="Algorithm">Algorithm</a>
+                            
+                        </div>
+                        <h1>알고리즘은 무엇이고 왜 알아야 되며 어떻게 공부해야 되는걸까 ?</h1>
+                        <h2 class="subheading">알고리즘은 무엇이고 언제 필요하고 어떻게 공부를 해야 될까요?</h2>
+                        <span class="meta">
+                            Posted by JayB Kim on
+                            2017-04-20
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">JayB Tech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2><span id="알고리즘이란">알고리즘이란?</span></h2>
+<p>안녕하세요?</p>
+<p>철학적인 개발자 JayB 입니다.</p>
+<p>항상 어떤 새로운 용어나 개념이 나오면 구글링을 하여 정의 부터 알아보는 습관이 있기때문에 먼저 알고리즘이란 무엇인지 검색해보았습니다.</p>
+<p><a href="https://ko.wikipedia.org/wiki/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98" target="_blank" rel="noopener">위키피디아</a> 에선 알고리즘을 다음과 같이 정의하고 있네요.</p>
+<blockquote>
+<p>알고리즘이란 어떠한 문제를 해결하기 위한 여러 동작들의 모임이다. 유한성을 가지며, 언젠가는 끝나야 하는 속성을 가지고 있다. 수학과 컴퓨터 과학에서 알고리즘이란 작동이 일어나게 내재하는 단계적 집합이다. 알고리즘은 연산, 데이터 진행 또는 자동화된 추론을 수행한다. 알고리즘이라는 단어는 페르시아의 수학자이던 알콰리즈미의 이름에서 따온 것이다.</p>
+</blockquote>
+<p>우리는 인생을 살아가면서 일상생활에서 다양한 문제들을 접하게 됩니다.</p>
+<p>알고리즘은 그러한 문제들을 해결할 때 그 절차를 알기 쉽도록 기술하는 논리적인 절차과정을 의미합니다.</p>
+<p>쉽게 예를 들어,</p>
+<p>자판기에서 음료수를 뽑아 마시고 싶을때 하는 일련의 과정 또는 절차과정을 생각해보시면 쉽습니다.</p>
+<ol>
+<li>
+<p>자판기 앞으로 간다</p>
+</li>
+<li>
+<p>돈 (지폐나 코인)을 넣는다</p>
+</li>
+<li>
+<p>마시고 싶은 음료수를 확인한 뒤 해당 음료가 있는 버튼을 선택한다</p>
+</li>
+<li>
+<p>땡그랑! 하고 떨어진 음료수를 꺼낸다</p>
+</li>
+<li>
+<p>잔돈이 있다면 잔돈을 받는다.</p>
+</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/20435620/29493942-2b79eb20-85db-11e7-8059-cb5c4ea0f2ee.png" alt="algorithm_2"></p>
+<p>이렇게 알고리즘이란건 어떤일을 해결하려 할 때의 절차과정 이라고 생각하시면 됩니다.</p>
+<h2><span id="개발자로써-알고리즘-공부는-왜-해야하는-걸까">개발자로써 알고리즘 공부는 왜 해야하는 걸까?</span></h2>
+<p>결론 부터 말씀 드리면,</p>
+<blockquote>
+<p>알고리즘을 잘 알면 좋지만 굳이 많이 알아야 실무에서 개발을 잘할 수 있다고 생각하지 않습니다.</p>
+</blockquote>
+<p>지금까지 개발을 해오면서 알고리즘은 구직할 때 코딩테스트를 보기위해 공부했던 것 같고</p>
+<p>알고리즘의 필요성을 느끼진 못했습니다.</p>
+<p>지금도 따로 알고리즘 공부를 위해 시간을 할애하진 않습니다.</p>
+<p>기본적인 수준의 알고리즘만 알고 있으면 제 경험상 실무에서 (서비스 웹 / 앱 개발) 그닥 필요없습니다.</p>
+<p>그럼 이렇게 물어보는 사람도 있겠군요.</p>
+<p><strong>알고리즘을 잘 알면 실무에서 도움이 되나?</strong></p>
+<p>이건 어떤 프로젝트를 개발하냐에 따라 다른 것 같습니다. 즉, 케이스 바이 케이스 입니다.</p>
+<p>애플리케이션에 병목현상이 생겨 이를 개선해야된다거나 특정 로직에 어떤 알고리즘을 사용함으로써</p>
+<p>더 나은 속도를 낸다고 했을땐 당연히 많은 알고리즘을 알고 있는게 도움이 됩니다.</p>
+<p>허나, 요즘 구글링을 통해 왠만한건 다 나옵니다.</p>
+<p>검토하고 적용할 수 있는 능력만 있다면 왠만한건 다 개선할 수 있다고 생각됩니다.</p>
+<p>즉, 제가 생각하는 개발에 중요한 요소는 얼마나 알고리즘을 얼마나 많이 알고 있는지가 아니라 <strong>문제해결능력</strong> 과 <strong>개발 요령</strong> 입니다.</p>
+<p><strong>문제해결능력</strong> 이란 문제에 직면했을때 해결하려고 어떻게 접근하는지, 어떤 프로세스를 거쳐 해결을 하는지에 대한 능력을 의미합니다.</p>
+<p>프로그래밍을 하다보면 매번 에러에 직면하게되고 그 에러를 찾아내기 위해 머리를 쥐어짜내야 합니다.</p>
+<p>한가지의 해결책만 있는게 아니라 여러 해결책중에 어떤게 최선일지에 대한 고민도 해봐야 됩니다.</p>
+<p><strong>개발 요령</strong> 이란 개발 노하우 (Know How)를 의미합니다.</p>
+<p>새로운 언어나 개념을 접했을때 이해가 안될 때 어떻게 하면 쉽게 이해할 수 있을지,</p>
+<p>문제에 직면했을때 어떤 노하우로 해결을 할지, 이런 요령을 말하는 겁니다.</p>
+<p>개발 요령같은 경우는 하루 아침에 늘릴 수 있는 부분이 아닙니다.</p>
+<p>수 많은 시간을 들여 이것저것 삽질을 많이 해보고 해결하는 경험이 필요합니다.</p>
+<p>알고리즘에 관해 이야기를 하다가 개발에 중요한 포인트에 대해 말이 새버렸지만</p>
+<p>다시 알고리즘를 왜 공부해야하는지로 돌아와서…</p>
+<p>복잡한 알고리즘이 필요하거나 성능이 중요시 되는 프로그램을 개발한다면 물론 알고리즘이</p>
+<p>중요한 부분을 차지하지만 적어도 지금까지 내가 개발한 안드로이드 앱이나 간단한 웹 개발은</p>
+<p>복잡한 알고리즘이 필요하진 않았습니다.</p>
+<p>최적화보단 생산성이 중요했습니다.</p>
+<p>요새 트렌트를 봤을때 지금 이 시대에는 <strong>생산성</strong>이 중요한 시대입니다.</p>
+<p>점점 더 발전한 언어가 나오고 새로운 플랫폼이 나오면서 개발자는 좀 더 편한 환경에서</p>
+<p>빠르게 개발 할 수 있게 되었고 유명한 오픈소스 라이브러리나 프레임워크들은 조금만 찾아보면</p>
+<p>금방 나오는걸 알 수 있습니다.</p>
+<p>Github Repository에만 가도 정말 좋은 라이브러리리들이 많습니다.</p>
+<p>그런걸 검토할 줄 알고 사용할 줄 알아서 개발하고자 하는 어플리케이션에 적용시키는것 또한</p>
+<p>개발 요령이라고 생각합니다. 이런 유명한 라이브러리나 프레임워크들은 다년간 업데이트하며</p>
+<p>최적화를 시켜왔기 때문에 당연하게도 직접 알고리즘적으로 접근하여 튜닝하는 것보다 백배 낫다고 생각합니다.</p>
+<p>그럼에도 불구하고, 왜 알고리즘에 시간을 할애하고 있는 걸까?</p>
+<p>다음과 같은 이유에서 입니다.</p>
+<ol>
+<li>
+<p>최근 로우레벨단 앱을 개발하면서 최적화시켜야 되는 알고리즘을 구축해야 됬고 CPU 성능, 메모리 사용량 등 을 고려해야 됬기 때문이다.</p>
+</li>
+<li>
+<p>이번에 구직활동을 시작하면서 여러 기업에서 코딩테스트를 요구하였기 때문이다. (피할 수 없다면 즐겨라!)</p>
+</li>
+<li>
+<p>미래에 해외취업을 염두해 두고 있기 때문에 해외기업은 대부분 코딩테스트를 보기 때문이다.</p>
+</li>
+</ol>
+<p>문제를 풀어보면서 느끼는 거지만 난 알고리즘에 재능이 없는 것 같다.</p>
+<p>재능이 없다고 포기하면 매번 포기하게 된다.</p>
+<p>좀 더 많은 시간과 노력을 기울여야겠다.</p>
+<p>한번 보고 두번 보고 세번 보고… 하다 보면 어느새 늘어있지 않을까?</p>
+<p>그리고 알고리즘 문제들을 풀다보니 코딩적 사고가 발달 되는걸 느끼게 되었다.</p>
+<p>예를 들어,2 중 포문이나 복잡한 구조를 취한 소스코드를 봤을때 좀 더 쉽게 이해할 수 있게 된 것 같다.</p>
+<p>다시 본론으로 돌아와서 위에서 설명한 자판기에서 음료수를 뽑는 단순한 과정과 달리 우리가 일상생활에서 접하게 되는 문제들은 단순하게 풀리지 않는다.</p>
+<p>예를 들어, 아래와 같은 그림을 보면 알 수 있듯이 집에서 학교까지 가장 빠르게 가려면 어떤 루트를 선택해야 될까?</p>
+<p><img src="https://user-images.githubusercontent.com/20435620/29493889-7d60142e-85da-11e7-80f9-bd6743518cd2.png" alt="alrogithm_1"></p>
+<p>여러 갈림길 놓였을때 어떤 길과 교통수단을 선택하느냐에 따라 소요되는 시간 차이가 달라질 거다.</p>
+<p>지금 시대에야 네이버지도나 다음지도 또는 구글지도를 활용하여 쉽게 찾아갈 수 있겠지만 불과 10년 전만 해도 길 찾기가 힘들었던 걸로 기억한다.</p>
+<p>학교에 처음 입학해 가는 길이라면 지그재그로 갈 수도 있을테고…</p>
+<p>평소에 가던길이 공사중인 길이라면 삥~ 돌아가야 되는 상황이 발생하여 평소보다 더 많은 시간이 걸릴수도 있을테고…</p>
+<p>기술은 끊임없이 발전하고 세상은 점점 복잡한 문제들을 해결해야 된다</p>
+<p>이렇게 생활 속에서 발견할 수 있는 다양한 문제 상황처럼 프로그램을 개발 할 때에도 알고리즘을 활용하면 목적에 맞게 효율적으로 문제를 해결할 수 있다</p>
+<p>즉, 알고리즘은 좋은 알고리즘을 찾고 언제 적용할지 아는 것은 흥미로운 프로그램을 만드는데, 세상의 복잡한 문제들을 해결하는데 도움을 준다.</p>
+<p>이번 포스팅에선 알고리즘을 공부하게 된 이유에 대해 말하면서 개발할 때 중요한 포인트가 뭔지에 대해 다뤄봤다.</p>
+<p>다음 포스팅에선 <strong>알고리즘의 성능</strong> 에 대하여 다뤄보도록 하겠다.</p>
+<h2><span id="알고리즘-공부를-하면서-읽고-참고한-사이트-그리고-알고리즘-문제를-풀고-배울-수-있는-사이트-정리">알고리즘 공부를 하면서 읽고 참고한 사이트 그리고 알고리즘 문제를 풀고 배울 수 있는 사이트 정리</span></h2>
+<h3><span id="읽고-참고한-사이트">읽고 참고한 사이트</span></h3>
+<ul>
+<li>
+<p>[블로그] : <a href="https://codly.co.kr/algorithm" target="_blank" rel="noopener">https://codly.co.kr/algorithm</a></p>
+</li>
+<li>
+<p>[Khan Academy] : <a href="https://ko.khanacademy.org/computing/computer-science/algorithms" target="_blank" rel="noopener">https://ko.khanacademy.org/computing/computer-science/algorithms</a></p>
+</li>
+</ul>
+<h3><span id="알고리즘을-배우고-알고리즘-문제를-풀-수-있는-사이트">알고리즘을 배우고 알고리즘 문제를 풀 수 있는 사이트</span></h3>
+<ul>
+<li>
+<p>[BAEKJOON ONLINE JUDGE] : <a href="http://www.acmicpc.net" target="_blank" rel="noopener">http://www.acmicpc.net</a></p>
+</li>
+<li>
+<p>[Codility] : <a href="https://codility.com/programmers/" target="_blank" rel="noopener">https://codility.com/programmers/</a></p>
+</li>
+<li>
+<p>[코딩도장] : <a href="http://codingdojang.com/" target="_blank" rel="noopener">http://codingdojang.com/</a></p>
+</li>
+</ul>
+<h2><span id="알고리즘에-관한-다음-포스트">알고리즘에 관한 다음 포스트</span></h2>
+<ul>
+<li>알고리즘의 성능 [시간복잡도와 공간복잡도] : <a href="https://jaybkim1.github.io/articles/2017-08/Algorithm-2" target="_blank" rel="noopener">시간복잡도와 공간복잡도</a></li>
+</ul>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2017/04/23/Algorithm-2/" data-toggle="tooltip" data-placement="top" title="알고리즘 분석">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">알고리즘이란?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">개발자로써 알고리즘 공부는 왜 해야하는 걸까?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">알고리즘 공부를 하면서 읽고 참고한 사이트 그리고 알고리즘 문제를 풀고 배울 수 있는 사이트 정리</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">읽고 참고한 사이트</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">알고리즘을 배우고 알고리즘 문제를 풀 수 있는 사이트</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">알고리즘에 관한 다음 포스트</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#알고리즘" title="알고리즘">알고리즘</a>
+                        
+                          <a class="tag" href="/tags/#Algorithm" title="Algorithm">Algorithm</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "jaybtech";
+    var disqus_identifier = "https://jaybdev.net/2017/04/20/Algorithm-1/";
+    var disqus_url = "https://jaybdev.net/2017/04/20/Algorithm-1/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jaybkim1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/jaybkim2">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/jaybkim1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; JayB Kim 2018 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Designed by <a href="https://jaybdev.net">JayB</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://jaybdev.net/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-105225167-1';
+    var _gaDomain = 'https://jaybdev.net';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://jaybdev.net/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Continuous effort will reward you in the end">
+    <meta name="keyword"  content="Software Engineer, Developer">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          REST가 모야? REST API? - JayB Kim
+        
+    </title>
+
+    <link rel="canonical" href="https://jaybdev.net/2017/04/28/Web-2/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('null')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/JayBTechSignature-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Web" title="Web">Web</a>
+                            
+                        </div>
+                        <h1>REST가 모야? REST API?</h1>
+                        <h2 class="subheading">REST의 개념과 RESTful한 아키텍처 설계에 대한 이해</h2>
+                        <span class="meta">
+                            Posted by JayB Kim on
+                            2017-04-28
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">JayB Tech</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2><span id="들어가기-전에">들어가기 전에…</span></h2>
+<p>최근들어 채용공고를 보면 지원자격에 RESTful API 가 종종 들어가 있는걸 보고 RESTful API에 맞게 설계했나요? 라는 질문도 면접에서 심심찮게 들어본 경험이 있다.</p>
+<p>웹 개발 당시 RESTful 하게 아키텍처를 설계하기 위해 많은 글을 읽고 참고하며 적용을 한다고 했지만 그 당시에도 다른 사람을 가르칠 정도로 개념이 머릿속에 자리잡히진 못했던 것 같다.</p>
+<p>시간이 흐르니 설명하기 힘들정도로 개념에 대해 잊어버린 것 같아 정리해볼 겸 구글링을 하던 중 잘 정리해놓은 글이 있어 가져와봤다.</p>
+<p>아래 내용은 spoqa 기술 블로그의 2012년도 초에 작성된 <a href="https://spoqa.github.io/2012/02/27/rest-introduction.html" target="_blank" rel="noopener">REST 아키텍처를 훌륭하게 적용하기 위한 몇 가지 디자인 팁</a>의</p>
+<p>내용을 참고하여 작성되었습니다.</p>
+<p>최근의 서비스/애플리케이션의 개발 흐름은 멀티 플랫폼, 멀티 디바이스 시대로 넘어와 있습니다.</p>
+<p>단순히 하나의 브라우저만 지원하면 되었던 이전과는 달리, 최근의 서버 프로그램은 여러 웹 브라우저는 물론이며, 아이폰, 안드로이드 애플리케이션과의 통신에 대응해야 합니다.</p>
+<p>그렇기 때문에 매번 서버를 새로 만드는 수고를 들이지 않기 위해선 <strong>범용적인 사용성을 보장하는 서버 디자인</strong> 이 필요합니다.</p>
+<p>REST 아키텍처는 Hypermedia API의 기본을 충실히 이행하여 만들고자 하는 <strong>시스템의 디자인 기준을 명확히 확립하고 범용성을 보장</strong> 하게 해줍니다.</p>
+<p>이번 글에선 <strong>현대 서비스 디자인을 RESTful하게 설계하는 기초적인 내용</strong> 에 대해 정리하려고 합니다.</p>
+<h2><span id="rest란-무엇인가">REST란 무엇인가?</span></h2>
+<p>REST는 Representational state transfer의 약자로, 월드와이드웹과 같은 분산 하이퍼미디어 시스템에서 운영되는 소프트웨어 아키텍처스타일입니다.</p>
+<p>2000년에 Roy Fielding에 의해 처음 용어가 사용되었는데, 이 분은 HTTP/1.0, 1.1 스펙 작성에 참여했었고 아파치 HTTP 서버 프로젝트의 공동설립자이기도 합니다.</p>
+<p>REST는 HTTP/1.1 스펙과 동시에 만들어졌는데, HTTP 프로토콜을 정확히 의도에 맞게 활용하여 디자인하게 유도하고 있기 때문에 디자인 기준이 명확해지며,</p>
+<p>의미적인 범용성을 지니므로 중간 계층의 컴포넌트들이 서비스를 최적화하는 데 도움이 됩니다. <strong>REST의 기본 원칙을 성실히 지킨 서비스 디자인은 “RESTful 하다.”</strong> 라고 흔히 표현합니다.</p>
+<p>무엇보다 이렇게 잘 디자인된 API는 서비스가 여러 플랫폼을 지원해야 할 때, 혹은 API로서 공개되어야 할 때,</p>
+<p>설명을 간결하게 해주며 여러 가지 문제 상황을 지혜롭게 해결하기 때문에 (버전, 포맷/언어 선택과 같은) REST는 최근의 모바일, 웹 서비스 아키텍처로서 아주 중요한 역할을 하고 있습니다.</p>
+<h2><span id="중심-규칙">중심 규칙</span></h2>
+<p>REST에서 가장 중요하며 기본적인 규칙은 아래 두 가지입니다.</p>
+<ul>
+<li>URI는 정보의 자원을 표현해야 한다.</li>
+<li>자원에 대한 행위는 HTTP Method(GET, POST, PUT, DELETE 등)으로 표현한다.</li>
+</ul>
+<p>1번 사용자에 대해 정보를 받아야 할 때를 예를 들면, 아래와 같은 방법은 좋지 않습니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /users/show/1</span><br></pre></td></tr></table></figure>
+<p>이와 같은 URI 방식은 REST를 제대로 적용하지 않은 구 버전의 Rails에서 흔히 볼 수 있는 URL입니다.</p>
+<p>이 URI은 자원을 표현해야 하는 URI에 /show/ 같은 불필요한 표현이 들어가 있기 때문에 적절하지 않습니다.</p>
+<p>본다는 것은 GET이라는 HTTP Method로 충분히 표현할 수 있기 때문이죠. 최근의 Rails는 아래와 같이 변경되었습니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /users/1</span><br></pre></td></tr></table></figure>
+<p>자원은 크게 <strong>Collection</strong> 과 <strong>Element</strong> 로 나누어 표현할 수 있으며,</p>
+<p>아래 테이블에 기초한다면 서버 대부분과의 통신 행태를 표현할 수 있습니다.</p>
+<p><img src="https://user-images.githubusercontent.com/20435620/29902278-115dc7f6-8e38-11e7-922a-866f70c05e2b.PNG" alt="rest"></p>
+<p>이 외에도 PATCH 라는 HTTP Method에도 주목하시기 바랍니다.</p>
+<p>PUT이 해당 자원의 전체를 교체하는 의미를 지니는 대신, PATCH는 일부를 변경한다는 의미를 지니기 때문에 최근 update 이벤트에서 PUT보다 더 의미적으로 적합하다고 평가받고 있습니다.</p>
+<p>Rails도 4.0부터 PATCH가 update 이벤트의 기본 Method로 사용될 것이라 예고하고 있습니다.</p>
+<h2><span id="입력-form은-어떻게-받아오게-하지">입력 Form은 어떻게 받아오게 하지?</span></h2>
+<p>위의 예시를 통해 많은 행태를 표현할 수 있습니다만 새로운 아이템을 작성하거나 기존의 아이템을 수정할 때 작성/수정 Form은 어떻게 제공할지에 대한 의문을 초기에 많이 가집니다.</p>
+<p>정답은 Form 자체도 정보로 취급해야 한다는 것입니다. 서버로부터 “새로운 아이템을 작성하기 위한 Form을 GET한다”고 생각하시면 됩니다.</p>
+<p>Rails 에선 기본적인 CRUD를 제공할 때 아래와 같은 REST 인터페이스를 구성해줍니다.</p>
+<p><img src="https://user-images.githubusercontent.com/20435620/29902298-31b4f10a-8e38-11e7-95ae-a4c0ec66b9c3.PNG" alt="rest1"></p>
+<h2><span id="모바일-환경에-따라-다른-정보를-보여줘야-한다면">모바일 환경에 따라 다른 정보를 보여줘야 한다면?</span></h2>
+<p>접속하는 환경에 따라 다른 정보를 보여줘야 할 때가 있습니다. 가령 모바일 디바이스에서 볼 때 다른 사용자 인터페이스를 제공한다든지 하는 경우인데요.</p>
+<p>일부 애플리케이션은 독립적인 모바일 웹서비스를 개발한 후 단지 이를 이동시켜주기만 할 때가 있는데, 이는 어떤 경우에 좋지 못한 사용성을 보여줍니다.</p>
+<p>모바일 뷰와 일반 웹페이지 뷰의 URI가 달라서 같은 정보를 공유할 때 각 환경에 적절한 디자인과 인터페이스로 보이지 않기 때문입니다.</p>
+<p>모바일에서 블로그를 구경하던 도중, 컴퓨터를 이용하고 있는 친구에게 자신이 보고 있는 내용을 보내주고 싶을 때가 있습니다.</p>
+<p>티스토리 블로그는 모바일 뷰의 URI가 기존 URI와 달라서, 친구가 해당 URI를 데스크탑에서 열어도 모바일에 최적화된 정보를 받을 수밖에 없게 됩니다.</p>
+<p>이 URI를 데스크탑에서 열어보시기 바랍니다.</p>
+<p>REST 하게 만든다면 URI는 플랫폼 중립적이어야 하며, 정보를 보여줄 때 여러 플랫폼을 구별해야 한다면 Request Header의 User-Agent 값을 참조하는 것이 좋습니다.</p>
+<p>예를 들어 iPhone에서 보내주는 User-Agent 값은 아래와 같습니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3</span><br></pre></td></tr></table></figure>
+<p>대부분 브라우저, OS 플랫폼은 HTTP Request를 보낼 시 보내는 주체에 대한 설명을 User-Agent에 상세하게 포함하여 통신하고 있기 때문에 요청자의 환경을 정확히 알 수 있습니다.</p>
+<h2><span id="ajax와-rest">Ajax와 REST</span></h2>
+<p>최근 빠른 속도의 웹서비스를 구현하기 위해 서비스 전체를 Ajax 통신으로 구동되게끔 HTML5 애플리케이션을 만드는 일이 많습니다.</p>
+<p>서비스 전체를 Ajax 기반으로 구동되게 개발한다면 중복된 콘텐츠를 여러 번 전달하지 않아도 되고, 브라우저 렌더링 과정이 간소화되므로 더욱 빠른 서비스를 구축할 수 있습니다.</p>
+<p>하지만 Ajax 기반의 서비스는 초기에 URL에 관련된 문제가 있어 REST한 서비스를 만들 때 애로사항이 있었습니다</p>
+<p>콘텐츠가 바뀌어도 URL은 그대로여서 친구에게 내가 보고 있는 콘텐츠를 보여줄 방법이 불편했기 때문이죠.</p>
+<p>최근엔 두 가지 방법으로 이를 보완할 수 있습니다. 첫 번째는 #! 기법으로, 구형 브라우저에서도 # 이하의 URL을 Javascript로 자유자재로 변경할 수 있다는 점을 이용한 방법입니다.</p>
+<p>방법은 아래와 같습니다.</p>
+<p>Ajax 통신을 통해 이동되는 페이지의 URI는 현재 URI의 #! 이후에 붙인다. 페이지가 처음 열릴 때, #! 이후로 URI가 붙어있다면 해당 URI로 redirect를 해준다.</p>
+<p>이와 같은 방법으로 Ajax 서비스를 만들면, 페이지를 이동한 이후에 URL을 친구에게 복사해서 전달해주어도 친구가 내가 보고 있는 콘텐츠를 볼 수 있으며,</p>
+<p>구글에서 수집할 때 해당 #! 이하의 URL을 판별해서 제대로 수집해주기 때문에 검색엔진에도 성공적으로 노출될 수 있습니다.</p>
+<p>하지만 위 방법의 단점은</p>
+<ol>
+<li>
+<p>상대방이 Javascript를 지원하지 않는 브라우저를 이용하거나 Javascript 기능을 꺼 놓았을 때 제대로 된 콘텐츠를 볼 수 없다는 것이며,</p>
+</li>
+<li>
+<p>URI가 몹시 보기 지저분해진다는 것입니다. 두 번째 방법은 pushState라는 새로운 표준을 이용한 방법으로, javascript의 pushState를 통해</p>
+</li>
+</ol>
+<p>Ajax 통신 후에 변경된 컨텐츠의 URI을 제대로 바꿔줄 수 있습니다.</p>
+<p>하지만 최신 표준을 지원하는 브라우저에서만 정상적으로 구동되기 때문에, 하위 호환에 신경을 써야 한다는 단점이 있습니다.</p>
+<p>pjax같은 프로젝트들이 하위 호환을 포함하여 이런 구현을 쉽게 하도록 도와주고 있습니다.</p>
+<h2><span id="마치며">마치며</span></h2>
+<p>REST는 여러 가지 서비스 디자인에서 생길 수 있는 문제를 최소화해주고, HTTP 프로토콜의 표준을 최대한 활용하여 여러 추가적인 장점을 함께 가져갈 수 있게 해줍니다.</p>
+<p>이번 글에서는 REST하지 않은 서버 설계를 통해 생길 수 있는 실질적인 문제들을 제시하고 REST 아키텍처가 이를 어떻게 해결해주는지 함께 보았습니다.</p>
+<p>‘REST가 완전한 정답이냐?’라고 한다면 이에 대해서는 아직 논의가 남아있습니다.</p>
+<p>구형 브라우저가 아직 제대로 지원해주지 못하는 부분이 분명히 있으며 (PUT, DELETE를 사용하지 못하는 점, pushState를 지원하지 않는 점)</p>
+<p>브라우저를 통해 테스트할 일이 많은 서비스라면 쉽게 고칠 수 있는 URL보다 Header 값은 왠지 더 어렵게 느껴지기도 합니다.</p>
+<p>만일, 만들고 있는 서비스의 API가 널리 쓰여야 한다면 REST를 완전하게 적용한 디자인이 더 독이 될 수 있습니다.</p>
+<p>많은 개발자는 별로 똑똑하지 못하며, HTTP 프로토콜에 대한 이해가 부족하여서 API가 어렵게 느껴질 수 있기 때문입니다.</p>
+<p>그러므로 Google을 포함한 많은 기업의 서비스 API가 REST 스타일을 완전히 따르고 있진 않습니다.</p>
+<p>하지만 그럼에도 REST가 중요한 점은, 이를 제대로 구현하는 것이 서비스 디자인에 큰 부가이익을 가져다 줄 수 있으며,</p>
+<p>많은 현대의 API들이 REST를 어느 정도로 충실하게 반영하느냐를 고민할 뿐이지 REST를 중심으로 디자인되고 있다는 점은 분명하기 때문입니다.</p>
+<p>REST를 얼마나 반영할 지는 API가 어떤 개발자를 범위에 두는지, 개발 기간이 얼마나 되는지, 함께 하는 동료의 역량은 어떠한지 등을 고려해서 집단마다 다르게 반영하게 될 것입니다.</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2017/04/30/Android-1/" data-toggle="tooltip" data-placement="top" title="XML과 JSON">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/04/25/Java-1/" data-toggle="tooltip" data-placement="top" title="추상(Abstract)클래스와 인터페이스(Interface)">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">들어가기 전에…</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">REST란 무엇인가?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">중심 규칙</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">입력 Form은 어떻게 받아오게 하지?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">모바일 환경에 따라 다른 정보를 보여줘야 한다면?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">Ajax와 REST</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">마치며</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Web" title="Web">Web</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "jaybtech";
+    var disqus_identifier = "https://jaybdev.net/2017/04/28/Web-2/";
+    var disqus_url = "https://jaybdev.net/2017/04/28/Web-2/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jaybkim1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/jaybkim2">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/jaybkim1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; JayB Kim 2018 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Designed by <a href="https://jaybdev.net">JayB</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://jaybdev.net/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-105225167-1';
+    var _gaDomain = 'https://jaybdev.net';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://jaybdev.net/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
