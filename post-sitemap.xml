@@ -8,15 +8,7 @@
 
     <url>
         <loc>https://jaybdev.net/2018/07/25/NodeJS-1/</loc>
-        <lastmod>2018-07-25T07:50:35.186Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://jaybdev.net/2017/04/28/Web-2/</loc>
-        <lastmod>2018-07-25T04:37:42.853Z</lastmod>
+        <lastmod>2018-07-25T07:54:16.342Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -24,6 +16,14 @@
 
     <url>
         <loc>https://jaybdev.net/2017/08/10/Web-3/</loc>
+        <lastmod>2018-07-25T04:37:42.853Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://jaybdev.net/2017/04/28/Web-2/</loc>
         <lastmod>2018-07-25T04:37:42.853Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -79,14 +79,6 @@
     </url>
 
     <url>
-        <loc>https://jaybdev.net/2017/06/23/Error-1/</loc>
-        <lastmod>2018-07-25T04:37:42.848Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://jaybdev.net/2017/05/03/Git-1/</loc>
         <lastmod>2018-07-25T04:37:42.848Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -95,8 +87,8 @@
     </url>
 
     <url>
-        <loc>https://jaybdev.net/2017/05/10/Android-2/</loc>
-        <lastmod>2018-07-25T04:37:42.847Z</lastmod>
+        <loc>https://jaybdev.net/2017/06/23/Error-1/</loc>
+        <lastmod>2018-07-25T04:37:42.848Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -104,6 +96,14 @@
 
     <url>
         <loc>https://jaybdev.net/2018/07/24/Disqus-1/</loc>
+        <lastmod>2018-07-25T04:37:42.847Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://jaybdev.net/2017/05/10/Android-2/</loc>
         <lastmod>2018-07-25T04:37:42.847Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
