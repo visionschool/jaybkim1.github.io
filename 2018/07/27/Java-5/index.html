@@ -235,16 +235,7 @@
 <h4><span id="gradle-또는-maven-에-의존성-추가"># gradle 또는 maven 에 의존성 추가</span></h4>
 <p>저는 maven 을 사용중이기 때문에 아래와 의존성을 추가 하였습니다.</p>
 <p><a href="https://search.maven.org/#search%7Cga%7C1%7Caws%20java%20sdk" target="_blank" rel="noopener">Maven Central Link</a>에서 최신 버전을 확인 할 수 있습니다.</p>
-<pre>
-<code>
-    <!-- aws-java-sdk -->
-    <dependency>
-        <groupid>com.amazonaws</groupid>
-        <artifactid>aws-java-sdk</artifactid>
-        <version>1.11.106</version>
-    </dependency>
-</code></pre>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- aws-java-sdk --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.amazonaws&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;aws-java-sdk&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.11.106&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 <h4><span id="iam-정책에서-access_key-와-secret_key-확인"># IAM 정책에서 ACCESS_KEY 와 SECRET_KEY 확인</span></h4>
 <p><img src="https://user-images.githubusercontent.com/34642220/43306498-5b0c1cd6-91b6-11e8-8196-71bc2601c510.png" alt="screen shot 2018-07-27 at 3 57 09 pm"></p>
 <p><font color="red"> 사용자에 S3 Access 권한이 있어야 합니다. 권한이 없을 경우, Users &gt; Permission Tab 에서 추가해주세요. </font></p>

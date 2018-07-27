@@ -30,14 +30,14 @@
     </url>
 
     <url>
-        <loc>https://jaybdev.net/tags/%EC%82%BD%EC%A7%88/</loc>
+        <loc>https://jaybdev.net/tags/Error/</loc>
         <lastmod>2018-07-25T04:37:42.848Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://jaybdev.net/tags/Error/</loc>
+        <loc>https://jaybdev.net/tags/%EC%82%BD%EC%A7%88/</loc>
         <lastmod>2018-07-25T04:37:42.848Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -80,28 +80,28 @@
 
     <url>
         <loc>https://jaybdev.net/tags/Java/</loc>
-        <lastmod>2018-07-27T07:09:31.746Z</lastmod>
+        <lastmod>2018-07-27T07:11:41.721Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://jaybdev.net/tags/Spring-Boot/</loc>
-        <lastmod>2018-07-27T07:09:31.746Z</lastmod>
+        <lastmod>2018-07-27T07:11:41.721Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://jaybdev.net/tags/AWS/</loc>
-        <lastmod>2018-07-27T07:09:31.746Z</lastmod>
+        <lastmod>2018-07-27T07:11:41.721Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://jaybdev.net/tags/S3/</loc>
-        <lastmod>2018-07-27T07:09:31.746Z</lastmod>
+        <lastmod>2018-07-27T07:11:41.721Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
