@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>https://jaybdev.net/2018/07/27/Java-5/</loc>
+        <lastmod>2018-07-27T07:09:31.746Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://jaybdev.net/2018/07/25/NodeJS-1/</loc>
         <lastmod>2018-07-25T07:54:16.342Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -15,7 +23,7 @@
     </url>
 
     <url>
-        <loc>https://jaybdev.net/2017/08/10/Web-3/</loc>
+        <loc>https://jaybdev.net/2017/04/28/Web-2/</loc>
         <lastmod>2018-07-25T04:37:42.853Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -23,7 +31,7 @@
     </url>
 
     <url>
-        <loc>https://jaybdev.net/2017/04/28/Web-2/</loc>
+        <loc>https://jaybdev.net/2017/08/10/Web-3/</loc>
         <lastmod>2018-07-25T04:37:42.853Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -79,7 +87,7 @@
     </url>
 
     <url>
-        <loc>https://jaybdev.net/2017/05/03/Git-1/</loc>
+        <loc>https://jaybdev.net/2017/06/23/Error-1/</loc>
         <lastmod>2018-07-25T04:37:42.848Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -87,7 +95,7 @@
     </url>
 
     <url>
-        <loc>https://jaybdev.net/2017/06/23/Error-1/</loc>
+        <loc>https://jaybdev.net/2017/05/03/Git-1/</loc>
         <lastmod>2018-07-25T04:37:42.848Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -143,7 +151,7 @@
     </url>
 
     <url>
-        <loc>https://jaybdev.net/2017/05/13/Algorithm-5/</loc>
+        <loc>https://jaybdev.net/2017/05/14/Algorithm-6/</loc>
         <lastmod>2018-07-25T04:37:42.843Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -151,7 +159,7 @@
     </url>
 
     <url>
-        <loc>https://jaybdev.net/2017/05/14/Algorithm-6/</loc>
+        <loc>https://jaybdev.net/2017/05/13/Algorithm-5/</loc>
         <lastmod>2018-07-25T04:37:42.843Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          비트맵 (Bitmap) 그래픽과 벡터 (Vector) 그래픽의 특징 - JayB Kim
+          Spring Boot AWS S3 연결 및 사용법 - JayB Kim
         
     </title>
 
-    <link rel="canonical" href="https://jaybdev.net/2017/08/10/Web-3/">
+    <link rel="canonical" href="https://jaybdev.net/2018/07/27/Java-5/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -90,14 +90,20 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Web" title="Web">Web</a>
+                              <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                            
+                              <a class="tag" href="/tags/#Spring Boot" title="Spring Boot">Spring Boot</a>
+                            
+                              <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
+                            
+                              <a class="tag" href="/tags/#S3" title="S3">S3</a>
                             
                         </div>
-                        <h1>비트맵 (Bitmap) 그래픽과 벡터 (Vector) 그래픽의 특징</h1>
-                        <h2 class="subheading">자주 사용되는 비트맵과 벡터 이미지의 기본적인 특징을 정리</h2>
+                        <h1>Spring Boot AWS S3 연결 및 사용법</h1>
+                        <h2 class="subheading">업로드, 다운로드, 버킷 리스트</h2>
                         <span class="meta">
                             Posted by JayB Kim on
-                            2017-08-10
+                            2018-07-27
                         </span>
                     </div>
                 
@@ -214,78 +220,147 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>안녕하세요?</p>
-<p>철학적인 개발자 JayB 입니다.</p>
-<p>오늘은 컴퓨터 그래픽 디자인의 기초적인 용어와 개념인 비트맵과 벡터에 대해 알아보면서 각각 어떤 방식인지와 특징을 정리해보려고 합니다.</p>
-<p>개발하면서 나중에 다시 참고하기 위해 여러 블로그와 문서들을 참조하였고 참고한 블로그와 문서들은 아래 적어놨습니다.</p>
-<h2><span id="비트맵-bitmap-방식과-벡터-vector-방식">비트맵 (Bitmap) 방식과 벡터 (Vector) 방식</span></h2>
-<p>컴퓨터 그래픽은 크게 비트맵 Bitmap 과 벡터 Vector 방식으로 구분됩니다.</p>
-<h3><span id="비트맵-bitmap-방식">비트맵 (Bitmap) 방식</span></h3>
-<p>비트맵 Bitmap은 ‘비트의 지도 (map of bits)‘란 뜻으로, 각 픽셀에 저장된 일련의 비트 정보 집합이라고 보시면 됩니다.</p>
-<p><strong>디스플레이는 픽셀들의 배열로 구성</strong> 되어 있습니다.</p>
-<p>픽셀들의 배열 방식, 픽셀들의 총 숫자나 가로 세로의 비율이 그 디스플레이의 해상도를 결정짓습니다.</p>
-<p>예를들어 1920 x 1080의 해상도를 가진 디스플레이는 가로 1920개, 세로 1080개의 픽셀들을 가진 다는 것을 의미합니다.</p>
-<p>가로와 세로의 값을 곱하면 그 디스플레이가 가진 총 픽셀 수가 됩니다.</p>
-<p><img src="https://user-images.githubusercontent.com/20435620/31209665-8de56ac2-a9c7-11e7-89c6-67784bc26e58.png" alt="bitmap"></p>
-<h3><span id="비트맵-방식의-특징">비트맵 방식의 특징</span></h3>
-<p>비트맵 이미지는 크기를 늘리거나 줄였을 때 원본 이미지에 손상이 일어나는 것이 특징입니다.</p>
-<p>흔히들 이미지가 깨졌다,라고 표현하는데, 특히 원본 크기에 비해 이미지를 크게 늘렸을 때 이 현상이 두드러집니다.</p>
-<p>자주 볼 수 있는 비트맵 이미지 형식으로 JPG, JPEG, PNG, GIF가 있습니다.</p>
-<p><img src="https://user-images.githubusercontent.com/20435620/31209915-4e6296d4-a9c9-11e7-8607-1a092fc6b0ab.gif" alt="bitmap"></p>
-<h3><span id="벡터-방식">벡터 방식</span></h3>
-<p>벡터 방식의 그래픽은 다음과 같은 메커니즘으로 구성됩니다.</p>
-<p>두 개의 점 (point) 이 연결되면 하나의 선path이 됩니다.</p>
-<p>그리고 그 선 (path) 이 세 개 이상이 되면 면을 만들 수 있습니다.</p>
-<p>그리고 각각의 선은 두께 값과 색상 값, 곡률 값을, 면은 색상 값을 가질 수 있습니다.</p>
-<p>이렇게 <strong>점과 선, 면의 기본적 벡터 그래픽 요소들이 모여 다양하고 복잡한 벡터 그래픽</strong> 을 만들 수 있게 됩니다.</p>
-<p><img src="https://user-images.githubusercontent.com/20435620/31209666-8f27a8aa-a9c7-11e7-8c72-5ae14f80309e.png" alt="vector"></p>
-<h3><span id="벡터-방식의-특징">벡터 방식의 특징</span></h3>
-<p>수학 방정식을 기반으로 그림이 그려지기 때문에 사용자가 크기를 늘리거나 줄이더라도 이미지에 손상이 나지 않는 것이 특징입니다.</p>
-<p>하지만 과도하게 복잡한 계산이 필요한 그림일 경우 컴퓨터에 큰 부담을 주기 때문에 일러스트레이터와 같은 프로그램에서 열었을 때</p>
-<p>로딩 및 편집 속도가 굉장히 느려질 수 있습니다.</p>
-<p>흔히 볼 수 있는 이미지 형식으로 AI, PDF가 있으며, 최근에는 SVG 형식도 많이 보이는 편입니다.</p>
-<p><img src="https://user-images.githubusercontent.com/20435620/31209917-517ab392-a9c9-11e7-81ed-2909d84146da.gif" alt="vector"></p>
-<h3><span id="비트맵-이미지와-벡터-이미지의-차이">비트맵 이미지와 벡터 이미지의 차이</span></h3>
-<p>이미지만 봐도 알 수 있습니다.</p>
-<p><img src="https://user-images.githubusercontent.com/20435620/31209944-899c217a-a9c9-11e7-84af-b3a248505933.gif" alt="bitmap_vector"></p>
-<h2><span id="정리">정리</span></h2>
-<p><strong>비트맵</strong></p>
+                <h2><span id="글의-목적"># 글의 목적</span></h2>
+<blockquote>
+<p>Spring Boot에서 AWS S3 Bucket과 연결하여 이미지 파일의 이름을 가져오고 파일을 업로드하고 다운로드 하는 방법에 대해서 정리하고자 합니다. 실무에서 S3에 새로운 이미지파일 (예를 들어, 아이콘)을 올리면 앱에 바로 반영되게끔 하고자 구현하게 되었습니다.</p>
+</blockquote>
+<h2><span id="환경-구성"># 환경 구성</span></h2>
 <ul>
-<li>
-<p>사용자가 이미지 크기를 늘리거나 줄이면 이미지 퀄리티에 큰 손상이 일어난다.</p>
-</li>
-<li>
-<p>우리가 흔히 사용하는 비트맵 이미지 형식인 JPG, JPEG, PNG, GIF 가 있다. 저용량이기에 웹에서 자주 활용된다.</p>
-</li>
+<li>AWS 계정과 S3 Bucket이 이미 생성되었다는 가정하에 시작합니다.</li>
 </ul>
-<p><strong>벡터</strong></p>
-<ul>
-<li>
-<p>사용자가 이미지 크기를 늘리거나 줄이더라도 이미지에 손상이 나지 않는다.</p>
-</li>
-<li>
-<p>벡터 이미지 형식으로 AI, PDF, SVG 형식이 있다.</p>
-</li>
-<li>
-<p>벡터 그래픽은 작업에 용이하다. 점, 선, 면으로 모든 그래픽 요소들이 이루어져 있기에 수정하는 과정에서 그래픽 작업 유지 관리에 좋다.</p>
-</li>
-</ul>
-<p>최근 하드웨어의 발전으로 용량에 대한 부담이 적어져 몇몇 사이트에서는 벡터 포맷의 이미지를 사용하는 추세이다.</p>
-<h2><span id="참고한-블로그와-문서">참고한 블로그와 문서</span></h2>
-<ul>
-<li>
-<p><a href="https://m.blog.naver.com/PostView.nhn?blogId=plipop&amp;logNo=220673521161&amp;proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F" target="_blank" rel="noopener">https://m.blog.naver.com/PostView.nhn?blogId=plipop&amp;logNo=220673521161&amp;proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F</a></p>
-</li>
-<li>
-<p><a href="https://spoqa.github.io/2012/06/13/bitmap-vector.html" target="_blank" rel="noopener">https://spoqa.github.io/2012/06/13/bitmap-vector.html</a></p>
-</li>
-<li>
-<p><a href="https://ko.wikipedia.org/wiki/%EC%9D%B4%EB%AF%B8%EC%A7%80_%ED%8C%8C%EC%9D%BC_%ED%98%95%EC%8B%9D" target="_blank" rel="noopener">https://ko.wikipedia.org/wiki/이미지_파일_형식</a></p>
-</li>
-<li>
-<p><a href="http://kbp.kongju.ac.kr/cg_edu/cg1_data/5week_2.htm" target="_blank" rel="noopener">http://kbp.kongju.ac.kr/cg_edu/cg1_data/5week_2.htm</a></p>
-</li>
-</ul>
+<blockquote>
+<p>아래는 샘플 이미지가 추가된 Bucket의 모습입니다.</p>
+</blockquote>
+<p><img src="https://user-images.githubusercontent.com/34642220/43305890-52141c48-91b4-11e8-9ef4-13dccb783089.png" alt="screen shot 2018-07-27 at 3 46 26 pm"></p>
+<h4><span id="gradle-또는-maven-에-의존성-추가"># gradle 또는 maven 에 의존성 추가</span></h4>
+<p>저는 maven 을 사용중이기 때문에 아래와 의존성을 추가 하였습니다.</p>
+<p><a href="https://search.maven.org/#search%7Cga%7C1%7Caws%20java%20sdk" target="_blank" rel="noopener">Maven Central Link</a>에서 최신 버전을 확인 할 수 있습니다.</p>
+<pre>
+<code>
+    <!-- aws-java-sdk -->
+    <dependency>
+        <groupid>com.amazonaws</groupid>
+        <artifactid>aws-java-sdk</artifactid>
+        <version>1.11.106</version>
+    </dependency>
+</code></pre>
+
+<h4><span id="iam-정책에서-access_key-와-secret_key-확인"># IAM 정책에서 ACCESS_KEY 와 SECRET_KEY 확인</span></h4>
+<p><img src="https://user-images.githubusercontent.com/34642220/43306498-5b0c1cd6-91b6-11e8-8196-71bc2601c510.png" alt="screen shot 2018-07-27 at 3 57 09 pm"></p>
+<p><font color="red"> 사용자에 S3 Access 권한이 있어야 합니다. 권한이 없을 경우, Users &gt; Permission Tab 에서 추가해주세요. </font></p>
+<h2><span id="예제"># 예제</span></h2>
+<h4><span id="amazons3utiljava"># AmazonS3Util.java</span></h4>
+<pre>
+<code>
+  private static Logger logger = LoggerFactory.getLogger(AmazonS3Util.class);
+
+  private static final String accessKey = "YOUR ACCESS_KEY";
+  private static final String secretKey = "YOUR SECRET_KEY";
+  private static final String region = "YOUR REGION";
+  private static final String bucketName = "YOUR BUCKET NAME";
+
+  private static AmazonS3 s3client() {
+    BasicAWSCredentials awsCredentials = new BasicAWSCredentials(accessKey, secretKey);
+    AmazonS3 s3Client = AmazonS3ClientBuilder.standard().withRegion(Regions.fromName(region))
+        .withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();
+    return s3Client;
+  }
+
+  // 업로드
+  public static void uploadFile(String fileName, String uploadFilePath) {
+    try {
+      File file = new File(uploadFilePath);
+      s3client().putObject(new PutObjectRequest(bucketName, fileName, file));
+      System.out.println("================== Upload File - Done! ==================");
+    } catch (AmazonServiceException ase) {
+      logger.info("Caught an AmazonServiceException from PUT requests, rejected reasons:");
+      logger.info("Error Message:    " + ase.getMessage());
+      logger.info("HTTP Status Code: " + ase.getStatusCode());
+      logger.info("AWS Error Code:   " + ase.getErrorCode());
+      logger.info("Error Type:       " + ase.getErrorType());
+      logger.info("Request ID:       " + ase.getRequestId());
+    } catch (AmazonClientException ace) {
+      logger.info("Caught an AmazonClientException: ");
+      logger.info("Error Message: " + ace.getMessage());
+    }
+  }
+
+  // 다운로드 
+  public static void downloadFile(String keyName) {
+    try {
+      System.out.println("Downloading an object");
+      S3Object s3object = s3client().getObject(new GetObjectRequest(bucketName, keyName));
+      System.out.println("Content-Type: " + s3object.getObjectMetadata().getContentType());
+      // .txt 파일이면 파일 읽는 부분
+      displayText(s3object.getObjectContent());
+      logger.info("================== Downloade File - Done! ==================");
+    } catch (AmazonServiceException ase) {
+      logger.info("Caught an AmazonServiceException from GET requests, rejected reasons:");
+      logger.info("Error Message:    " + ase.getMessage());
+      logger.info("HTTP Status Code: " + ase.getStatusCode());
+      logger.info("AWS Error Code:   " + ase.getErrorCode());
+      logger.info("Error Type:       " + ase.getErrorType());
+
+    } catch (AmazonClientException ace) {
+      logger.info("Caught an AmazonClientException: ");
+      logger.info("Error Message: " + ace.getMessage());
+    }
+  }
+
+  // .txt 파일 읽어드리는 함수
+  private static void displayText(InputStream input) {
+    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+    while (true) {
+      String line = null;
+      try {
+        line = reader.readLine();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      if (line == null)
+        break;
+      System.out.println(line);
+    }
+  }
+
+  // 특정 버켓에 들어있는 파일 리스트 가져오기
+  public static List<string> getObjectsListFromFolder() {
+
+    ListObjectsRequest listObjectsRequest = new ListObjectsRequest().withBucketName(bucketName);
+
+    List<string> fileNames = new ArrayList<>();
+
+    ObjectListing objects = s3client().listObjects(listObjectsRequest);
+    for (;;) {
+      List<s3objectsummary> summaries = objects.getObjectSummaries();
+      if (summaries.size() < 1) {
+        break;
+      }
+      summaries.forEach(s -> fileNames.add(s.getKey()));
+      objects = s3client().listNextBatchOfObjects(objects);
+    }
+    return fileNames;
+  }
+
+  // 파일 URL 가져오기
+  public static String getFileURL(String fileName) {
+    String imageName = (fileName).replace(File.separatorChar, '/');
+    String imageUrl = s3client()
+        .generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName, imageName)).toString();
+    return imageUrl;
+  }
+</s3objectsummary></string></string></code></pre>
+
+<h2><span id="마무리"># 마무리</span></h2>
+<blockquote>
+<p>구글링을 해보면 인터넷에 나와있는 사용법이 많이 있지만 대부분 업로드와 다운로드 뿐이였습니다.<br>
+특정 버킷의 파일리스트를 가져오고 그 파일들의 URL을 알 수 있는 함수가 필요하여 영어로 된 자료에서 참고하여<br>
+저희 회사 시스템에 맞게끔 구현하였습니다.</p>
+</blockquote>
+<blockquote>
+<p>궁금하신 부분이 있으면 언제든지 댓글로 남겨주세요 ^^<br>
+잘못된 부분이나 오타도 언제든 환영합니다.</p>
+</blockquote>
 
                 
 
@@ -293,13 +368,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2018/07/24/Disqus-1/" data-toggle="tooltip" data-placement="top" title="Disqus 삽질">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2017/07/15/Java-4/" data-toggle="tooltip" data-placement="top" title="String, StringBuffer, StringBuilder 의 차이점">Next Post &rarr;</a>
+                            <a href="/2018/07/25/NodeJS-1/" data-toggle="tooltip" data-placement="top" title="node.js 앱의 인스턴스를 관리해주는 forever 명령어 정리">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -329,7 +400,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">비트맵 (Bitmap) 방식과 벡터 (Vector) 방식</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">비트맵 (Bitmap) 방식</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">비트맵 방식의 특징</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">벡터 방식</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">벡터 방식의 특징</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">비트맵 이미지와 벡터 이미지의 차이</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">정리</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">참고한 블로그와 문서</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"># 글의 목적</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"># 환경 구성</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.0.1.</span> <span class="toc-nav-text"># gradle 또는 maven 에 의존성 추가</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.0.2.</span> <span class="toc-nav-text"># IAM 정책에서 ACCESS_KEY 와 SECRET_KEY 확인</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"># 예제</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.0.1.</span> <span class="toc-nav-text"># AmazonS3Util.java</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"># 마무리</span></a></li></ol>
         
         </div>
       </aside>
@@ -349,7 +420,13 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Web" title="Web">Web</a>
+                          <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                        
+                          <a class="tag" href="/tags/#Spring Boot" title="Spring Boot">Spring Boot</a>
+                        
+                          <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
+                        
+                          <a class="tag" href="/tags/#S3" title="S3">S3</a>
                         
                     </div>
                 </section>
@@ -369,8 +446,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "jaybtech";
-    var disqus_identifier = "https://jaybdev.net/2017/08/10/Web-3/";
-    var disqus_url = "https://jaybdev.net/2017/08/10/Web-3/";
+    var disqus_identifier = "https://jaybdev.net/2018/07/27/Java-5/";
+    var disqus_url = "https://jaybdev.net/2018/07/27/Java-5/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
