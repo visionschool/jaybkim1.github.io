@@ -9,13 +9,6 @@
     </url>
 
     <url>
-        <loc>https://jaybdev.net/tags/Algorithm/</loc>
-        <lastmod>2018-07-25T04:37:42.845Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://jaybdev.net/tags/Android/</loc>
         <lastmod>2018-07-25T04:37:42.847Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -30,6 +23,13 @@
     </url>
 
     <url>
+        <loc>https://jaybdev.net/tags/Git/</loc>
+        <lastmod>2018-07-25T04:37:42.848Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://jaybdev.net/tags/Error/</loc>
         <lastmod>2018-07-25T04:37:42.848Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -38,13 +38,6 @@
 
     <url>
         <loc>https://jaybdev.net/tags/%EC%82%BD%EC%A7%88/</loc>
-        <lastmod>2018-07-25T04:37:42.848Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://jaybdev.net/tags/Git/</loc>
         <lastmod>2018-07-25T04:37:42.848Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -80,28 +73,56 @@
 
     <url>
         <loc>https://jaybdev.net/tags/Java/</loc>
-        <lastmod>2018-07-27T07:11:41.721Z</lastmod>
+        <lastmod>2018-07-27T07:27:07.601Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://jaybdev.net/tags/Spring-Boot/</loc>
-        <lastmod>2018-07-27T07:11:41.721Z</lastmod>
+        <lastmod>2018-07-27T07:27:07.601Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://jaybdev.net/tags/AWS/</loc>
-        <lastmod>2018-07-27T07:11:41.721Z</lastmod>
+        <lastmod>2018-07-27T07:27:07.601Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://jaybdev.net/tags/S3/</loc>
-        <lastmod>2018-07-27T07:11:41.721Z</lastmod>
+        <lastmod>2018-07-27T07:27:07.601Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://jaybdev.net/tags/Algorithm/</loc>
+        <lastmod>2018-09-27T03:44:31.278Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://jaybdev.net/tags/Cosmos-Hub/</loc>
+        <lastmod>2018-09-27T07:35:56.552Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://jaybdev.net/tags/Tendermint-Core/</loc>
+        <lastmod>2018-09-27T07:35:56.552Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://jaybdev.net/tags/Blockchain/</loc>
+        <lastmod>2018-09-27T07:35:56.552Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

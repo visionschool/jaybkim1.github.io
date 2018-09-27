@@ -7,8 +7,24 @@
     </url>
 
     <url>
+        <loc>https://jaybdev.net/2018/09/25/Tendermint-1/</loc>
+        <lastmod>2018-09-27T07:35:56.552Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://jaybdev.net/2017/06/13/Algorithm-9/</loc>
+        <lastmod>2018-09-27T03:44:31.278Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://jaybdev.net/2018/07/27/Java-5/</loc>
-        <lastmod>2018-07-27T07:11:41.721Z</lastmod>
+        <lastmod>2018-07-27T07:27:07.601Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -87,7 +103,7 @@
     </url>
 
     <url>
-        <loc>https://jaybdev.net/2017/06/23/Error-1/</loc>
+        <loc>https://jaybdev.net/2017/05/03/Git-1/</loc>
         <lastmod>2018-07-25T04:37:42.848Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -95,7 +111,7 @@
     </url>
 
     <url>
-        <loc>https://jaybdev.net/2017/05/03/Git-1/</loc>
+        <loc>https://jaybdev.net/2017/06/23/Error-1/</loc>
         <lastmod>2018-07-25T04:37:42.848Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -127,15 +143,7 @@
     </url>
 
     <url>
-        <loc>https://jaybdev.net/2017/06/13/Algorithm-9/</loc>
-        <lastmod>2018-07-25T04:37:42.845Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://jaybdev.net/2017/06/11/Algorithm-8/</loc>
+        <loc>https://jaybdev.net/2017/06/10/Algorithm-7/</loc>
         <lastmod>2018-07-25T04:37:42.844Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -143,7 +151,7 @@
     </url>
 
     <url>
-        <loc>https://jaybdev.net/2017/06/10/Algorithm-7/</loc>
+        <loc>https://jaybdev.net/2017/06/11/Algorithm-8/</loc>
         <lastmod>2018-07-25T04:37:42.844Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -183,7 +191,7 @@
     </url>
 
     <url>
-        <loc>https://jaybdev.net/2017/04/20/Algorithm-1/</loc>
+        <loc>https://jaybdev.net/2017/04/23/Algorithm-2/</loc>
         <lastmod>2018-07-25T04:37:42.840Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -191,7 +199,7 @@
     </url>
 
     <url>
-        <loc>https://jaybdev.net/2017/04/23/Algorithm-2/</loc>
+        <loc>https://jaybdev.net/2017/04/20/Algorithm-1/</loc>
         <lastmod>2018-07-25T04:37:42.840Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
